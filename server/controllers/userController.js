@@ -15,9 +15,9 @@ const createUser = async (req, res) => {
     user.save();
     res.status(201).json({
       response: {
-        username: User.username,
-        accesToken: User.accesToken,
-        userId: User._id
+        username: user.username,
+        accessToken: user.accessToken,
+        userId: user._id
       },
       success: true
     })
