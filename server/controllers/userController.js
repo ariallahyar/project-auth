@@ -13,7 +13,14 @@ const createUser = async (req, res) => {
     const salt = bcrypt.genSaltSync();
     const user = await new User({ username, email, password: bcrypt.hashSync(password, salt)});
     user.save();
-    res.status(201).redirect("/signin");
+    res.status(201).json({
+      response: {
+        username: User.username,
+        accesToken: User.accesToken,
+        userId: User._id
+      },
+      success: true
+    })
   } catch (error) {
     res.status(409).json({ message: "Could not create user", error: error.message });
   }
