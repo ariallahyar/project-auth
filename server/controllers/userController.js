@@ -27,8 +27,8 @@ const createUser = async (req, res) => {
 };
 
 const loginUser = async (req, res) => {
-  const { email, password } = req.body;
-  const user = await User.findOne({ email });
+  const { username, password } = req.body;
+  const user = await User.findOne({ username });
   if (user && bcrypt.compareSync(password, user.password)) {
     res.json({ accessToken: user.accessToken });
   } else {
