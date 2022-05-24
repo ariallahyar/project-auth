@@ -30,9 +30,9 @@ const loginUser = async (req, res) => {
   const { username, password } = req.body;
   const user = await User.findOne({ username });
   if (user && bcrypt.compareSync(password, user.password)) {
-    res.json({ accessToken: user.accessToken });
+    res.status(200).json({ accessToken: user.accessToken });
   } else {
-    res.json({ message: "User not found" });
+    res.status(400).json({ message: "Username and password don't match" });
   }
 };
 
