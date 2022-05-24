@@ -4,14 +4,14 @@ import bcrypt from "bcrypt";
 const getUsers = async (req, res) => {
   const users = await User.find();
   res.status(200).json(users);
-}; 
+};
 
 const createUser = async (req, res) => {
-	const { username, email, password } = req.body;
+  const { username, email, password } = req.body;
 
-	try {
+  try {
     const salt = bcrypt.genSaltSync();
-    const user = await new User({ username, email, password: bcrypt.hashSync(password, salt)});
+    const user = await new User({ username, email, password: bcrypt.hashSync(password, salt) });
     user.save();
     res.status(201).json({
       response: {
@@ -37,8 +37,8 @@ const loginUser = async (req, res) => {
 };
 
 const authenticateUser = async (req, res, next) => {
-	const user = await User.findOne({ accessToken: req.header("Token")});
-	if (user) {
+  const user = await User.findOne({ accessToken: req.header("Token") });
+  if (user) {
     req.user = user;
     next();
   } else {
@@ -47,7 +47,7 @@ const authenticateUser = async (req, res, next) => {
 };
 
 const sendMessage = (req, res) => {
-  res.status(200).json({ message: "Yay, welcome!"})
+  res.status(200).json({ message: "Yay, welcome!" })
 };
 
 module.exports = { getUsers, createUser, loginUser, authenticateUser, sendMessage };
