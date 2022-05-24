@@ -1,11 +1,15 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
+import { BASE_URL } from "utils/urls";
 
 const SignUp = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const URL = "https://savari-auth.herokuapp.com/signup";
+	const navigate = useNavigate();
+
 	const options = {
 		method: "POST",
 		headers: { "Content-Type": "application/json" },
@@ -14,11 +18,13 @@ const SignUp = () => {
 
 	const handleOnSubmit = (event) => {
 		event.preventDefault();
-		fetch(URL, options)
+		fetch(`${BASE_URL}/signup`, options)
       .then((response) => response.json())
-      .then((data) => console.log(data))
+			.then((data) => {
+				console.log(data)
+				navigate("/signin")
+			})
 			.catch((error) => console.log(error));
-		// navigate to login
 	};
 
   return (
