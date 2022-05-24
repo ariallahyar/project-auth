@@ -47,7 +47,7 @@ const authenticateUser = async (req, res, next) => {
 };
 
 const sendMessage = (req, res) => {
-  res.send("Yay, welcome!")
+  res.status(200).json({ message: "Yay, welcome!"})
 };
 
 module.exports = { getUsers, createUser, loginUser, authenticateUser, sendMessage };
