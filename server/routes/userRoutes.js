@@ -1,4 +1,4 @@
-import express from 'express'
+import express, { application } from 'express'
 import { 
   getUsers, 
   createUser, 
@@ -9,10 +9,9 @@ import {
 
 const router = express.Router();
 
-router.get("/users", getUsers); // gets all users
-router.post("/signup", createUser); // new user creates account
-router.post("/signin", loginUser); // login to exisiting account
-router.get("/response", authenticateUser);
-router.get("/response", sendMessage);
+router.get("/users", getUsers);
+router.post("/signup", createUser);
+router.post("/signin", loginUser);
+router.get("/session", authenticateUser, sendMessage);
 
 module.exports = router;
