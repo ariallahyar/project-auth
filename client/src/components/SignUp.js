@@ -53,7 +53,7 @@ const SignUp = () => {
         />
         <label htmlFor="password">Password</label>
         <input
-          type="text"
+          type="password"
           id="password"
           value={password}
           onChange={(event) => setPassword(event.target.value)}
