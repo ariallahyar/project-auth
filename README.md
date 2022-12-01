@@ -1,13 +1,14 @@
 # Project Auth API
 
-Replace this readme with your own information about your project.
+This was a pair programming project that required building an API with authentication to implement a registration flow and a frontend with forms to register, sign in and view content once logged in.  
 
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+The backend consists of: 
+- Registration endpoint to create a new user
+- Signin endpoint to authenticate a user
+- Enpoint behind authentication to return content only when a user's auth token is provided as a header
 
-## The problem
-
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
-
-## View it live
-
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+The frontend consists of:
+- A registration form
+- A signin form
+- A page to show the authenticated content from the API
+- A signout button that removes the saved access token and redirects the user to the login form
